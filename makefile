@@ -1,7 +1,7 @@
 all: README.md
 
 README.md: guessinggames.sh
-	echo "Guessing Game" > README.md
+	echo "Guessing Game"$'\n' > README.md
 	echo $$(date) >> README.md
 	wc -l guessinggames.sh | egrep -o "[0-9]+" >> README.md
 clean:
