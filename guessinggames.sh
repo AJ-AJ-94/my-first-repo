@@ -1,32 +1,28 @@
 echo "Whats Your name friend ?"
 read name
-echo "Hi $name!" $'\n'"Welcome to our GuessingGame." $'\n'"Rules are simple: You need to guess how many files have 'Learning' folder." $'\n'"When You will be close I say hot otherwise I say cold." $'\n'"There can be max 20 files." $'\n'"Lets get to start!" $'\n'"Put your first guess: "
-read number
+echo "Hi $name!" $'\n'"Welcome to our GuessingGame." $'\n'"Rules are simple: You need to guess how many files are in the folder" $'\n'"Lets get to start!"
 
-while [ $number -ne 10 ] ; 
+function guess {
+	echo "Enter the number: "
+	read number
+	files=$(ls -l | wc -l)
+}
+
+guess
+
+while [[ $number -ne $files ]] ; 
 
 do
-	if
-	 [[ $number  -ge 15 && $number -le 20 || $number -le 5 ]] ; then
-	 echo "cold" $'\n'"Next guess: "
-	read number
+	if [[ $number -lt $files ]] ; then
+	echo "Your guess is too low"
 
-	elif
-	 [[ $number -le 14 && $number -ge 11 ]] ; then
-	 echo "hot" $'\n'"Next guess: "
-	read number
+	else 
+	echo "Your number is too high"
 
-	elif
-	 [[ $number -le 9 && $number -ge 6 ]] ; then
-	 echo "hot" $'\n'"Next guess: "
-	read number
-
-else
-	echo "Out of range."
-exit
-
-fi
+	fi
+guess
 
 done
 
-echo "You guessed! Bravo!"
+echo "You guessed!"
+
